@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Caesar": {
+      "commandName": "Project",
+      "commandLineArgs": "3 ciphertext.txt -d"
+    }
+  }
+}
