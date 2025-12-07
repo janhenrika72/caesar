@@ -20,6 +20,12 @@ var inputText = File.ReadAllText(inputFile);
 
 const string alphabet = "abcdefghijklmnopqrstuvwxyzæøå";
 
+if (shift < 1 || shift > alphabet.Length)
+{
+    Console.WriteLine($"Shift value must be between 1 and {alphabet.Length}.");
+    return;
+}
+
 var offset = decrypt ? -shift : shift;
 
 var outputText = new StringBuilder(inputText.Length);

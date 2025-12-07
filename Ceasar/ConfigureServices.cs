@@ -1,14 +1,14 @@
 ﻿using Ceasar.Services;
+using Ceasar.Services.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Ceasar;
 public static class ConfigureServices
 {
-    public static IServiceCollection AddServices(this IServiceCollection services)
+    public static IServiceCollection AddEncryptionServices(this IServiceCollection services)
     {
         return services
-            .AddSingleton<CaesarCryptoService>()
-            .AddSingleton<EncryptionCommandBuilder>()
+            .AddScoped<ICryptoService, CaesarCryptoService>()
         ;
     }
 }
