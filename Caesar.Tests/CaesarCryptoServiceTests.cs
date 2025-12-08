@@ -119,4 +119,8 @@ public class CaesarCryptoServiceTests(ICryptoService caesarCryptoService)
         Assert.False(result.IsSuccess);
         Assert.True(result.Errors.Any(e => e.Contains("Shift value must be between")), "Expected error about invalid shift value");
     }
+
+    // Improvement: Add specific tests for punctuation handling, case sensitivity
+    // Improvement: Add specific test for argument parsing logic
+
 }

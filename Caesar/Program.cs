@@ -22,6 +22,8 @@ using var scope = app.Services.CreateScope();
 
 var cryptoService = scope.ServiceProvider.GetRequiredService<ICryptoService>();
 
+// Improvement: Read args from stdin
+
 var encryptionResult = cryptoService.TransformFromArguments(args);
 
 if (!encryptionResult.IsSuccess)
