@@ -20,7 +20,7 @@ var inputText = File.ReadAllText(inputFile);
 
 const string alphabet = "abcdefghijklmnopqrstuvwxyzæøå";
 
-if (shift < 1 || shift > alphabet.Length)
+if (shift < 1 || shift >= alphabet.Length)
 {
     Console.WriteLine($"Shift value must be between 1 and {alphabet.Length}.");
     return;

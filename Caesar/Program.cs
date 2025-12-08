@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.DependencyInjection;
-using Ceasar;
-using Ceasar.Services.Interfaces;
+using Caesar;
+using Caesar.Services.Interfaces;
 
 // Build the host
 
@@ -20,14 +20,14 @@ using var scope = app.Services.CreateScope();
 
 // Execute the encryption/decryption
 
-var caesarService = scope.ServiceProvider.GetRequiredService<ICryptoService>();
+var cryptoService = scope.ServiceProvider.GetRequiredService<ICryptoService>();
 
-var encryptResult = caesarService.TransformFromArguments(args);
+var encryptionResult = cryptoService.TransformFromArguments(args);
 
-if (!encryptResult.IsSuccess)
+if (!encryptionResult.IsSuccess)
 {
     Console.Error.WriteLine("Transformation command could not be completed, due to following errors:");
-    foreach (var error in encryptResult.Errors)
+    foreach (var error in encryptionResult.Errors)
     {
         Console.Error.WriteLine($"- {error}");
     }
@@ -35,4 +35,7 @@ if (!encryptResult.IsSuccess)
     return;
 }
 
-Console.WriteLine(encryptResult.OutputText);
+// Present
+// Improvement: Could be further abstracted to output to file, etc.
+
+Console.WriteLine(encryptionResult.OutputText);

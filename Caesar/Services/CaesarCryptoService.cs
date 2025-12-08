@@ -1,8 +1,9 @@
-﻿using Ceasar.Services.Interfaces;
-using Ceasar.Services.Parameters;
+﻿using Caesar.Services.Helpers;
+using Caesar.Services.Interfaces;
+using Caesar.Services.Parameters;
 using System.Text;
 
-namespace Ceasar.Services;
+namespace Caesar.Services;
 
 public class CaesarCryptoService() : ICryptoService
 {
@@ -21,7 +22,7 @@ public class CaesarCryptoService() : ICryptoService
             };
         }
 
-        // Read input file
+        // Read input file, can be further abstracted
 
         var fileReadResult = ReadInputFile(parsedArguments.InputFilePath);
 
@@ -59,12 +60,12 @@ public class CaesarCryptoService() : ICryptoService
         if (caesarEncryptionCommand is null)
         {
             result.IsSuccess = false;
-            result.Errors.Add("Invalid command type for Caesar encryption.");
+            result.Errors.Add("Invalid command type for Caesar encryption");
             return result;
         }
 
         // Validate input
-
+        // Improvment: Validation logic can be further abstracted
         var validationResult = ValidateCommand(caesarEncryptionCommand);
 
         if (!validationResult.IsValid)
@@ -135,7 +136,7 @@ public class CaesarCryptoService() : ICryptoService
         var errors = new List<string>();
         if (!System.IO.File.Exists(inputFilePath))
         {
-            errors.Add($"Input file '{inputFilePath}' does not exist.");
+            errors.Add($"Input file '{inputFilePath}' does not exist");
             return (false, string.Empty, errors);
         }
 
@@ -157,16 +158,16 @@ public class CaesarCryptoService() : ICryptoService
 
         // Validate shift value
 
-        if (command.Shift < 1 || command.Shift > Constants.Alphabet.Length)
+        if (command.Shift < 1 || command.Shift >= Constants.Alphabet.Length)
         {
-            errors.Add($"Shift value must be between 1 and {Constants.Alphabet.Length}.");
+            errors.Add($"Shift value must be between 1 and {Constants.Alphabet.Length}");
         }
 
         // Validate input text
 
         if (string.IsNullOrEmpty(command.InputText))
         {
-            errors.Add("Input text cannot be empty.");
+            errors.Add("Input text cannot be empty");
         }
 
         // Validate characters in input text
@@ -175,7 +176,7 @@ public class CaesarCryptoService() : ICryptoService
         {
             if (!char.IsWhiteSpace(c) && !char.IsPunctuation(c) && !Constants.Alphabet.Contains(char.ToLowerInvariant(c)))
             {
-                errors.Add($"Invalid character '{c}' in input text.");
+                errors.Add($"Invalid character '{c}' in input text");
             }
         }
 

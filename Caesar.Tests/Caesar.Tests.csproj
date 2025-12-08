@@ -16,7 +16,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\Ceasar\Ceasar.csproj" />
+	  <ProjectReference Include="..\Caesar\Caesar.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>

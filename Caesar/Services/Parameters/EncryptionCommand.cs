@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ceasar.Services.Parameters;
+namespace Caesar.Services.Parameters;
 public class EncryptionCommand
 {
     public string InputText { get; set; } = string.Empty;

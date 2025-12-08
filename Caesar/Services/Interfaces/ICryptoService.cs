@@ -1,10 +1,9 @@
-﻿using Ceasar.Services.Parameters;
+﻿using Caesar.Services.Parameters;
 
-namespace Ceasar.Services.Interfaces;
+namespace Caesar.Services.Interfaces;
 public interface ICryptoService
 {
     EncryptionResult TransformFromArguments(string[] args);
-
     EncryptionResult Transform<T>(T command) where T : EncryptionCommand;
 }
 
